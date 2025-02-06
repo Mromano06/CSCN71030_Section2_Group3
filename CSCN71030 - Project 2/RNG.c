@@ -17,6 +17,7 @@ int RNG(int maxVal, int mod) {
 // Random number will be 0-100, default miss is 10, so the basic random number will have 90% bigger than 10,
 // and if the random number is 1-10(10 numbers 10%), it would be a miss, speed increase the physical hit and
 // magic hit(if exists) increase the magic hit.
+// If function returns true, hit successed, and if it is false, hit missed.
 bool attackHitCheck(int speed) {
 	int hit = speed/PHYSICALHITCOEFFICIENT + rand() % (MAXPROBILITY + ONE);
 	if (hit > DEFAULTMISS) {
@@ -46,4 +47,31 @@ int damageOfAttack(int strength, int defense) {
 int damageOfMagic(int intelligence, int magicDefense) {
 	int damage = intelligence * (MAXPROBILITY - magicDefense) / MAXPROBILITY;
 	return damage;
+}
+
+int autoBattle(int playerHealth, int monsterHealth, int playerSpd, int monsterSpd, int playerStr, int playerInt, int playerDef, int playerMagicDef,
+	int monsterStr, int monsterInt, int monsterDef, int monsterMagicDef) {
+	// No need to check the speed because the auto battle option is based on player's turn.
+	while (playerHealth > 0) {
+		if (playerStr >= playerInt) {
+			damageOfAttack(playerStr, monsterDef);
+			monsterHealth = monsterHealth - damageOfAttack;
+		}
+		else {
+			damageOfMagic(playerInt, monsterMagicDef);
+			monsterHealth = monsterHealth - damageOfMagic;
+		}
+	}
+	while (monsterHealth > 0) {
+		if (monsterStr >= monsterInt) {
+			damageOfAttack(monsterStr, playerDef);
+			playerHealth = playerHealth - damageOfAttack;
+		}
+		else {
+			damageOfMagic(monsterInt, playerMagicDef);
+			playerHealth = playerHealth - damageOfMagic;
+		}
+	}
+	printf("You are defeated.")
+		return playerHealth;
 }

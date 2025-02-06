@@ -19,4 +19,6 @@ bool magicHitCheck(int magichit);
 
 // Damage of attack will be fixed.
 int damageOfAttack(int strength, int defense);
-int damageOfMagic(int intelligence);
+int damageOfMagic(int intelligence, int magicDefense);
+
+void autoBattle(int playerHealth, int bossHealth, int playerSpd, int bossSpd, int playerStr, int playerInt, int bossStr, int bossInt);
