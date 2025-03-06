@@ -51,7 +51,6 @@ void storyBegins() {
     scanf_s("%d", &userInput);
     if (userInput == 1) {
         printf("No turning back now. Your adventure begins!\n ");
-        checkPoint(2);
         return;
     }
     else {
@@ -68,7 +67,7 @@ void storyBegins() {
 }
 void storyBeginsAgain() {
     int userInput;
-    checkPoint(100)
+    checkPoint(100)//loop checkpoint
     printf("          # #### ####  \n");
     printf("       ### \\/#|### |/####\n");
     printf("      ##\\/#/\\||/##/_/##/_#\n");
@@ -95,7 +94,6 @@ void storyBeginsAgain() {
     scanf_s("%d", &userInput);
     if (userInput == 1) {
         printf("No turning back now. Your adventure begins!\n ");
-        checkPoint (2);
         return;
     }
     else {
@@ -112,7 +110,7 @@ void storyBeginsAgain() {
 
 void actOne() {
     int userInput;
-    checkPoint(3)
+    checkPoint(2)
     printf("\nThe scent of damp earth and crushed leaves fills the air as you weave through the underbrush.\n");
     Sleep(2000);
     printf("Your hands stained with berry juice from picking the small red berries you find in the bushes.\n");
