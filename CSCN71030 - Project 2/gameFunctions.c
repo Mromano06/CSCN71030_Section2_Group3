@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "gameFunctions.h"
 #include "PlayerCharacter.h"
+#include "Storyline.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,9 +40,8 @@ bool saveGame(PC* toSave) {
 	fprintf(newGameFile, "%d, ", toSave->stats[2]);
 	fprintf(newGameFile, "%d, ", toSave->stats[3]);
 	fprintf(newGameFile, "%d, ", toSave->stats[4]);
-	fprintf(newGameFile, "%d", toSave->stats[5]);
-
-	//fprintf(newGameFile, "Checkpoint:   Temp\n");	// nothing right now but will have the part of story
+	fprintf(newGameFile, "%d, ", toSave->stats[5]);
+	fprintf(newGameFile, "%d", checkPoint(0));       // hopefully this works
 
 	// character stats obv but how is the more important part
 
@@ -81,6 +81,7 @@ PC loadGame() {
             player.stats[3] = itl;
             player.stats[4] = def;
             player.stats[5] = speed;
+            
         }
     }
 
