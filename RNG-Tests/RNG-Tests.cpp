@@ -48,4 +48,8 @@ namespace RNGTests
 			Assert::IsTrue(test);
 		}
 	};
+
+	TEST_CLASS(CombatTests) {
+		TEST_METHOD(Combatloop - 01) 
+	};
 }

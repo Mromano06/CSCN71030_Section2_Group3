@@ -20,19 +20,26 @@ int combatLoop(PC player, MOB enemy) {
 		if (hitCheckPC(player)) {
 			//roll for damage
 			int damagePC = MovesetDamagePC(player, enemy.stats[DEF], attackPC);
+			printf("%s attack the %s, deal %d damage!\n", player.name, enemy.name, &damagePC);
 			//deal damage
 			enemyHP = enemyHP - damagePC; //this replaced takeDamage()
-			if ( enemyHP <= 0)
+			if (enemyHP <= 0) {
+				print("The %s was defeated!\n", enemy.name);
 				return VICTORY;
+			}
 		}
 
 		//enemy moves second
 		if (hitCheckMOB(enemy)) {
 			//roll for damage
 			int damageMOB = MovesetDamageMOB(enemy, player.stats[DEF], attackMOB);
+			printf("%s attack the %s, deal %d damage!\n", enemy.name, player.name,  &damageMOB);
 			//deal damage
-			if (takeDamagePC(&playerHP, damageMOB) = 0)
+			playerHP = playerHP - damageMOB; //this replaced takeDamage()
+			if (playerHP <= 0) {
+				print("The %s was defeated!\n", player.name);
 				return LOSER;
+			}
 		}
 
 		//if you get here, there is no victor or loser yet
@@ -91,6 +98,7 @@ bool hitcheckPC(PC player){
 			return true;
 		}
 		else {
+			printf("Attack missed!");
 			return false;
 		}
 	case WAR:
@@ -99,6 +107,7 @@ bool hitcheckPC(PC player){
 			return true;
 		}
 		else {
+			printf("Attack missed!");
 			return false;
 		}
 	case MAG:
@@ -107,9 +116,20 @@ bool hitcheckPC(PC player){
 			return true;
 		}
 		else {
+			printf("Attack missed!");
 			return false;
 		}
 		default:
 	break;
+	}
+}
+
+bool hitCheckMOB(MOB enemy) {
+	int hit = enemy.stats[SPD] / 10 + RNG(100, 1); //roll for hit
+	if (hit > 10) {
+		return true;
+	}
+	else {
+		return false;
 	}
 }
