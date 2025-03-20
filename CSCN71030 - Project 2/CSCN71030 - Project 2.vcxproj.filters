@@ -8,6 +8,7 @@
     <ClCompile Include="mainMenu.c" />
     <ClCompile Include="optionsMenu.c" />
     <ClCompile Include="combat.c" />
+    <ClCompile Include="enemy.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerCharacter.h" />
@@ -16,5 +17,6 @@
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="optionsMenu.h" />
     <ClInclude Include="combat.h" />
+    <ClInclude Include="enemy.h" />
   </ItemGroup>
 </Project>
