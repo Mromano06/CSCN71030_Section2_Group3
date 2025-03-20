@@ -6,3 +6,4 @@
 
 
 int combatLoop(PC player, MOB enemy);
+void combat(PC* player, PC* monster);

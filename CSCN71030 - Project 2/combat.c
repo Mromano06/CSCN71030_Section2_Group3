@@ -41,6 +41,41 @@ int combatLoop(PC player, MOB enemy) {
 
 }
 
+void combat(PC* player, PC* monster) {
+	//print opening info.
+	printf("Combat Started! %s VS %s\n", player->name, monster->name);
+
+	//order check
+	PC* first;
+	PC* second;
+	if (player->stats[5] >= monster->stats[5]) {
+		//Create two new structs to copy player and monster,and decide the order of attack.
+		first = player;
+		second = monster;
+	}
+	else {
+		first = monster;
+		second = player;
+	}
+	while (player->stats[0] > 0 && monster->stats[0] > 0) {
+		// First attack
+		printf("%s attack the %s, deal %d damage£¡\n", first->name, second->name, (first->stats[2] - second->stats[4]));
+		second->stats[0] -= (first->stats[2] - second->stats[4]);
+		if (second->stats[0] <= 0) {
+			printf("%s was defeated!\n", second->name);
+			return;
+		}
+
+		// Second attack
+		printf("%s attack the %s, deal %d damage£¡\n", second->name, first->name, (second->stats[2] - first->stats[4]));
+		first->stats[0] -= (second->stats[2] - first->stats[4]);
+		if (first->stats[0] <= 0) {
+			printf("%s was defeated!\n", first->name);
+			return;
+		}
+	}
+}
+
 bool hitcheckPC(PC player){
 	int hit;
 	switch (player.charclass)
