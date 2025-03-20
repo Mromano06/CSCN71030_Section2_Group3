@@ -59,11 +59,16 @@ void combat(PC* player, PC* monster) {
 	}
 	while (player->stats[0] > 0 && monster->stats[0] > 0) {
 		// First attack
-		printf("%s attack the %s, deal %d damage£¡\n", first->name, second->name, (first->stats[2] - second->stats[4]));
-		second->stats[0] -= (first->stats[2] - second->stats[4]);
-		if (second->stats[0] <= 0) {
-			printf("%s was defeated!\n", second->name);
-			return;
+		if (hitcheckPC == true) {
+			printf("%s attack the %s, deal %d damage£¡\n", first->name, second->name, (first->stats[2] - second->stats[4]));
+			second->stats[0] -= (first->stats[2] - second->stats[4]);
+			if (second->stats[0] <= 0) {
+				printf("%s was defeated!\n", second->name);
+				return;
+			}
+		}
+		if (hitcheckPC == false) {
+			printf("%s's attack was missed£¡\n", first->name);
 		}
 
 		// Second attack
